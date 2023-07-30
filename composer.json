@@ -1,0 +1,22 @@
+{
+    "name": "huawei/mvc-project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Router\\" : "router/",
+            "Database\\": "database/"
+        },
+        "files": [
+            "app/helper/helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "mehmet"
+        }
+    ],
+    "require": {
+        "izniburak/router": "^2.5",
+      "ext-pdo": "*"
+    }
+}

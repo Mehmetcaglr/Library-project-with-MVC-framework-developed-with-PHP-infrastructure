@@ -1,0 +1,262 @@
+Composer nedir?
+-Composer php'nin paket yöneticisidir.Dışardan geliştirilmiş paketileri kendi projemizde kullanabilmeyi sağlar.
+-Composer bize composer.json dosayası oluşturur.  composer.json dosyası içerisinde bağımlıkları görürüz aynı zamanda psr4 standartlarında kod yazmamızı sağlar.
+-Composer ın terminal aracılığıyla composer un olup olmadığını ve sürümünü görebiliriz.
+-Composer https://getcomposer.org/download/ ordan download edebilirsin.
+-Composer init composer'ı başlatır.
+-Composer install composer'a paket  yükler
+-Composer update composer'daki paketleri günceller.
+-Composer dump-autoloader otomatik loader yapar tüm dosyaları include eder(composer du da çalışır).
+
+Namespace nedir?
+-opp ile yazılım geliştirirken aynı addan birden fazla sınıf kullanılabilir, karışıklığı en aza indirmek için kullanılır.
+-Aynı anda birden fazla sınıf için kullanılmasına izin veriler.
+-Yazıyı kolaylaştırmak için bir ad alanı veya sınıfa bir takma ad vermek yararlı olabilir.Bu use ile yapılır (alias=takma ad).
+
+
+
+Stack nedir Heap nedir?
+-Stack' atanan değerler doğrudan hafıza atanır buraya işgal ederler istenilidğinde doğrudan çağırılı.
+
+
+
+Explode fonksiyonu?
+-explode fonksiyonu aldığı stringi girelen değer'e göre parçalar ve stringi array'leştirir.
+
+
+!! fonksiyon olarak tanımlanan veri tiplerine Closure denir (larevel de url den sonra girilen oluşturulan yapılar).
+
+
+
+instanceof in opp?
+-instanceof bir nesnenin belirli bir sınıfa ait olup olmadığını kontrol etmek için kullanılır(boolean değer döndürür(true/false)).
+
+
+!! Statik yöntemler, önce sınıfın bir örneğini oluşturmadan doğrudan çağrılabilir.
+!! Statik methodlar diğrer sınıflardaki methodlar de çağırılabilir bu yüzden statik yöntemler public olmalıdır.
+
+Calling static methods?
+-SINIF İSMİ ::aStaticMethod();
+
+array_keys => anahtarları içeren bir dizi döndürür.
+
+array_values => bir dizinin tüm değerlerini döndürür(anahtarlarını değil).
+
+=> sınfıları bir değişkene atayıp new anahtar sözcüğü ile çağırırım
+-sınıftaki methodlara ve özelliklere erişmek için -> oparetörü kullanırım.
+
+( ÖRN KOD:   $apple = new Fruit();
+           $apple->set_name("Apple");
+
+           echo $apple->name; )
+
+protected => kullanıldığı sınıf içinde veya o sınıftan üretilen sınıflarda erişilebilir.
+
+private => kullanıldığı sınıf içinde kullanılabilir.
+
+array_merge => bu fonksiyon ile içinde yazdığım arrayları birleştiririm.
+
+use keyword => use anahtar sözcüğü bir sınıfa bir özelliği miras almasını söyler ve bir ad alanına takma ad verir.du
+
+<--------------------------------------------------------------------------------------------------------->
+         !! call_user_function Kullanımı !!
+         class Employee
+         {
+             public function work($param1, $param2 = null): void
+             {
+                 echo "Employee work methodu çalıştı: $param1 $param2";
+             }
+
+             public static function run(): void
+             {
+                 echo "statik çalıştı";
+             }
+         }
+
+         $className = "Employee";
+
+         //call_user_func([new $className, "work"], "Mehmet", "Ali"); //Employee work methodu çalıştı: Mehmet Ali
+         //call_user_func($className, "::run");
+
+         //call_user_func_array([new $className, "work"], ["Sinan"]); // Employee work methodu çalıştı: Sinan
+
+
+
+ Ternary operator
+
+ => (Condition) ? (Statement1) : (Statement2);
+
+ Condition-> Bir boole değeri döndüren, değerlendirilecek ifadedir.
+ Satement1-> Koşul doğru bir durumla sonuçlanırsa yürütülecek ifadedir.
+ Statement2-> Koşul  yanliş bir durum sonuçlanırsa yürütülecek ifadedir.
+
+
+
+ !! NOT !!
+ nasıl static properties aynı sınıfın içinde çağırılır.
+ => static::$booted
+
+
+ !! NOT !!
+! => Not => !$a return true if $a is not true
+
+
+
+??  =    Null coalescing   =    $x = exp1 ?? exp2     =  $x değerini döndürür. exp1 varsa ve null değilse
+                                                         $x'in değeri exp1 olur.exp1 yoksa veya null ise $x'in
+                                                         değeri exp2 olur.
+
+!! isset ve empty arasında ki fark isset değerin varlığını ve null olup olmadığını kontrol ederken empty null kontrolü yapmaz.
+
+
+
+<----------------------------------------------------------------------------------------------------------->
+
+1-Erişim: Static methodlar, sınıf adıyla doğrudan erişilebilirken, static olmayan methodlar nesne örneği üzerinden erişilebilir.
+Yani, bir static methoda erişmek için sınıf adını kullanabilirsiniz, ancak static olmayan bir methoda erişmek için bir nesne örneği oluşturmanız gerekmektedir.
+
+2-Örneklendirme: Static methodlar için bir örneklendirme işlemi yapmanıza gerek yoktur.
+Bunun yerine, sınıf adını kullanarak doğrudan çağrılabilirler. Ancak static olmayan methodlar, bir nesne örneği üzerinden çağrılabilir ve önce bir nesne oluşturmanız gerekmektedir.
+
+3-Değişkenler: Static methodlar, sadece static değişkenlere doğrudan erişebilir.
+Yani, static bir method içinde yalnızca static olarak tanımlanmış değişkenleri kullanabilirsiniz. Static olmayan methodlar ise static ve static olmayan değişkenlere erişebilir. Bunlar, sınıfın örneği üzerinden erişilebilen özel veya genel değişkenler olabilir.
+
+4-Miras: Static methodlar, miras aldıkları alt sınıflar tarafından ezilebilir (override) veya gizlenebilir (hide).
+Yani, bir alt sınıf, üst sınıfın static methodunu kendi uygulamasıyla değiştirebilir. Ancak static olmayan methodlar, varsayılan olarak miras alınabilir ve alt sınıflar tarafından override edilebilir.
+
+<----------------------------------------------------------------------------------------------------------->
+
+
+
+!! import = use ile dosyanın yolunu girme.
+
+!! inherted =  extends ile başka sınıftan miras verme.
+
+
+!! static bir methodu kuyruk yapısı ile çağırmak için
+bu anahtar sözcüğü kullanırız
+        return new self();
+
+
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+ORM (Object-Relational Mapping), bir programlama dilindeki nesne yönelimli yapıları ve ilişkisel veritabanı arasında bir köprü görevi gören bir tekniktir.
+PHP'de ORM, nesneleri veritabanı tablolarıyla ilişkilendirmek ve veritabanı işlemlerini nesne yönelimli bir şekilde gerçekleştirmek için kullanılır.
+
+ORM, veritabanı işlemlerini doğrudan SQL sorgularıyla uğraşmadan daha basit ve sade bir şekilde yapmanıza olanak tanır.
+Bu sayede veritabanı tablolarını PHP sınıflarına ve nesnelere dönüştürerek, veritabanı kayıtlarını nesneler aracılığıyla manipüle edebilirsiniz.
+
+PHP'de popüler ORM kütüphaneleri arasında Laravel'in Eloquent ORM, Doctrine ORM ve Propel gibi çeşitli seçenekler bulunur.
+Bu kütüphaneler, veritabanı tablolarını sınıflara ve nesnelere eşlemek için model sınıfları kullanır ve veritabanı işlemlerini bu sınıflar üzerinden gerçekleştirir.
+
+ORM yapısının sağladığı faydalar şunlardır:
+
+1. Daha kolay veritabanı işlemleri: ORM, SQL sorgularıyla uğraşmayı azaltarak veritabanı işlemlerini daha basit hale getirir.
+Nesneler aracılığıyla veritabanı kayıtlarını oluşturabilir, sorgulayabilir, güncelleyebilir ve silebilirsiniz.
+
+2. Veritabanı bağımsızlığı: ORM, farklı veritabanı sistemleriyle çalışabilme esnekliği sağlar.
+ORM kütüphaneleri, veritabanı arasında geçiş yaparken, sorguları ve yapıları otomatik olarak uygun şekilde dönüştürebilir.
+
+3. Nesne yönelimli programlama: ORM, nesne yönelimli programlama (OOP) prensiplerini teşvik eder.
+Veritabanı tabloları sınıflara ve veritabanı kayıtları nesnelere dönüştürülerek, OOP'nin avantajlarından yararlanmanıza olanak tanır.
+
+4. Sorgu optimizasyonu: ORM kütüphaneleri, sorguları otomatik olarak optimize edebilir ve performansı artırabilir. Ö
+nbellekleme, tembel yükleme (lazy loading) gibi tekniklerle veritabanı işlemlerini daha etkin hale getirebilirler.
+
+Özetlemek gerekirse, PHP'de ORM, veritabanı işlemlerini nesne yönelimli bir şekilde gerçekleştirmenizi sağlayan bir tekniktir.
+Bu şekilde, daha okunabilir, yönetilebilir ve esnek bir veritabanı katmanı oluşturabilirsiniz.
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+call_user_func_array işlevi, PHP'de bir fonksiyonu veya yöntemi çağırmak için kullanılan bir işlevdir.
+Bu işlev, değişken sayıda parametrelerle çalışmayı sağlar.
+Özellikle dinamik olarak oluşturulan parametre listelerini kullanmak gerektiğinde kullanışlıdır.
+
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+
+!!  NOT !!
+array_map() fonksiyonu, bir diziyi veya dizileri işlemek ve her bir elemana belirli bir işlem uygulamak için kullanışlıdır.
+İşlev olarak anonim fonksiyonlar, önceden tanımlanmış fonksiyonlar veya sınıf yöntemleri kullanabilirsiniz.
+
+
+
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+PHP'de bir arayüz (interface), bir sınıfın uygulaması gereken yöntemleri ve bazen özellikleri tanımlayan bir yapıdır.
+Arayüzler, bir sınıfın belirli bir davranışı veya işlevselliği garanti etmek için kullanılır. Bir sınıf, bir arayüzü uyguladığında, o arayüzde tanımlanan tüm yöntemleri (fonksiyonları) uygulamak zorundadır.
+
+Arayüzler, sınıflar arasında bir sözleşme sağlamak ve kodun daha modüler ve esnek olmasını sağlamak için kullanılır.
+Arayüzler aynı zamanda çoklu kalıtımın eksikliğini gidermek için de kullanılır, çünkü bir sınıf birden fazla arayüzü uygulayabilir.
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+
+PHP'de closure fonksiyonlar, işlevsel programlama ve anonim fonksiyonlar için kullanılan bir özelliktir.
+Closure, bir işlevin içinde tanımlanabilen ve kendi etki alanına sahip olan bir anonim fonksiyondur. Bir closure, değişkenleri yakalayabilen ve taşıyabilen bir işlevdir.
+
+Closure fonksiyonları, aşağıdaki durumlarda kullanışlıdır:
+
+Callback fonksiyonları: Closure'lar, bir işlevi başka bir işlevin argümanı olarak geçmek için kullanılabilir.
+Örneğin, bir dizi üzerinde işlem yapmak ve her öğe için farklı bir işlem gerçekleştirmek istediğinizde closure'ları kullanabilirsiniz.
+
+Etki alanı koruması: Closure'lar, içinde tanımlandıkları kapsamın değişkenlerine erişebilirler ve onları taşıyabilirler. Bu, closure'ları kullanarak değişkenlerin ömrünü kontrol etmenizi sağlar.
+Örneğin, bir işlevin dışındaki bir değişkeni kapatmak ve sonra kullanmak istediğinizde closure'ları kullanabilirsiniz.
+
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+triat'ler çoklu kalıtımın eksikliğini gidermek için kullanılır.
+trait _____
+{
+                                ile oluşturulur.
+}
+
+ve çağırılması use anahatar sözcüğü ile olur.
+
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+
+`array_filter()` ve `array_map()` fonksiyonları, bir dizi üzerinde işlemler gerççekleştirmek için kullanılan iki farklı fonksiyondur,
+ancak işlevleri birbirinden farklıdır.
+
+- `array_filter()` fonksiyonu, bir dizinin elemanlarını filtrelemek için kullanılır.
+Bir dizi üzerinde belirli bir filtreme işlevi uygular ve işlevin `true` değerini döndürdüğü elemanları yeni bir dizi olarak döndürür.
+Filtreleme işlevi, elemanları kontrol eder ve belirli bir koşulu karşılayan elemanları tutar, diğer elemanları ise filtreler. `array_filter()` işlevi, orijinal dizi üzerinde değişiklik yapmaz.
+
+Örnek:
+
+```php
+$numbers = [1, 2, 3, 4, 5];
+
+$evenNumbers = array_filter($numbers, function ($number) {
+    return $number % 2 === 0;
+});
+
+print_r($evenNumbers);
+```
+
+Yukarıdaki örnekte, `$numbers` dizisindeki çift sayıları filtrelemek için `array_filter()` fonksiyonu kullanılır.
+Sonuç olarak, `$evenNumbers` dizisi, sadece çift sayıları içeren bir dizi oluşturulur.
+
+- `array_map()` fonksiyonu ise bir dizinin elemanlarını dönüştürmek veya değiştirmek için kullanılır.
+Bir dizi üzerinde belirli bir işlevi her bir elemana uygular ve işlevin sonucunu yeni bir dizi olarak döndürür. Bu işlev, her eleman üzerinde aynı işlemi uygulayarak yeni bir dizi oluşturur. `array_map()` fonksiyonu, orijinal dizi üzerinde değişiklik yapmaz.
+
+Örnek:
+
+```php
+$numbers = [1, 2, 3, 4, 5];
+
+$squares = array_map(function ($number) {
+    return $number * $number;
+}, $numbers);
+
+print_r($squares);
+```
+
+Yukarıdaki örnekte, `$numbers` dizisindeki her bir elemanın karesini almak için `array_map()` fonksiyonu kullanılır.
+Sonuç olarak, `$squares` dizisi, her bir elemanın karesini içeren bir dizi oluşturulur.
+
+İki fonksiyon arasındaki temel fark, `array_filter()`'ın bir dizi üzerinde filtreleme yaparken orijinal dizinin elemanlarını değiştirmemesi
+ve `array_map()`'in bir dizi üzerinde dönüşüm yaparken orijinal dizinin elemanlarını değiştirmemesidir.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+interface'yi implement ettiğim sınınflar tipi interface olan değişkenlari kullanabilir

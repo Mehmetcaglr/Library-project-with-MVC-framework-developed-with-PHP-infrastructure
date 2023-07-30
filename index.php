@@ -107,7 +107,7 @@ Router::get("/product/parse", [ProductController::class, "getArray"]);
 Router::get("/product/edit/{id}", [ProductController::class, "edit"]);
 Router::post("/product/save", [ProductController::class, "save"]);
 Router::post("/product/update/{id}", [ProductController::class, "update"]);
-Router::get("/product/destroy/{id}", [ProductController::class, "destroy"]);
+//Router::get("/product/destroy/{id}", [ProductController::class, "destroy"]);
 
 
 Router::get("/home", [HomeController::class, "index"]);
